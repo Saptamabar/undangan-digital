@@ -212,7 +212,7 @@ export default function WeddingPage() {
                 <h3 className="font-heading text-4xl text-brand-dark">Resepsi</h3>
                 <div className="my-6 flex items-center justify-center gap-4">
                   <p className="font-heading text-xl">DES</p>
-                  <p className="font-heading text-6xl px-4 border-l-2 border-r-2 border-gold/50">21</p>
+                  <p className="font-heading text-6xl px-4 border-l-2 border-r-2 border-gold/50">05</p>
                   <p className="font-heading text-xl">2025</p>
                 </div>
                 <p className="flex items-center justify-center gap-3 mb-4"><BiTime className="text-gold text-xl"/> 16:00 - 20:00 WIB</p>
@@ -252,7 +252,6 @@ export default function WeddingPage() {
               {/* ✅ PERUBAHAN DIMULAI DI SINI */}
               {showGiftInfo === 'bank' && (
                   <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto space-y-4">
-                      <h4 className="font-heading text-xl text-center">Transfer Bank</h4>
                       
                       {/* --- Rekening Bank Mandiri --- */}
                       <div className="text-left p-4 border rounded-md bg-white">
@@ -321,7 +320,7 @@ export default function WeddingPage() {
             <SectionTitle>Konfirmasi Kehadiran</SectionTitle>
             <form data-aos="fade-up" className="max-w-lg mx-auto mt-10 text-left grid gap-4">
                 <input type="text" placeholder="Nama Lengkap"
-                    className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"/>                
+                    className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none placeholder:text-gray-400"/>                
                 <select className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none">
                     <option>Status Kehadiran</option>
                     <option>Hadir</option>
@@ -343,10 +342,10 @@ export default function WeddingPage() {
                 <SectionTitle>Ucapan & Doa</SectionTitle>
                 <form data-aos="fade-up" className="mt-10 grid gap-4">
                     <input type="text" placeholder="Nama Anda"
-                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"/>
+                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none placeholder:text-gray-400"/>
                     <textarea placeholder="Ucapan untuk pengantin"
                         rows={4}
-                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"></textarea>
+                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none placeholder:text-gray-400"></textarea>
                     <button type="submit"
                         className="w-full px-6 py-3 bg-black text-white rounded-full hover:bg-opacity-80 transition-colors">
                         Kirim Ucapan
