@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import { 
-  BiHeart, BiPlayCircle, BiPauseCircle, BiEnvelopeOpen, BiCalendarHeart, 
-  BiTime, BiSolidMap, BiSolidGift, BiSolidBank, BiSolidPackage 
+  BiPlayCircle, BiPauseCircle, BiEnvelopeOpen, BiCalendarHeart, BiHeart,
+  BiTime, BiSolidGift, BiSolidBank, BiSolidPackage,BiLinkExternal, BiCopy
 } from "react-icons/bi";
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
@@ -33,7 +32,7 @@ export default function WeddingPage() {
   }, []);
 
   useEffect(() => {
-    const weddingDate = new Date("Dec 21, 2025 09:00:00").getTime();
+    const weddingDate = new Date("Dec 05, 2025 09:00:00").getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = weddingDate - now;
@@ -75,11 +74,11 @@ export default function WeddingPage() {
         </button>
       )}
 
-      <div className={`fixed top-0 left-0 w-full h-full bg-cover bg-center flex justify-center items-center z-50 transition-opacity duration-1000 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} style={{ backgroundImage: "url('https://picsum.photos/1920/1080')" }}>
+      <div className={`fixed top-0 left-0 w-full h-full bg-cover bg-center flex justify-center items-center z-50 transition-opacity duration-1000 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} style={{ backgroundImage: "url('/Hero.webp')" }}>
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative text-center text-white p-5 animate-fade-in">
           <h4 className="text-lg tracking-widest">The Wedding of</h4>
-          <h1 className="font-heading text-6xl my-4">Sasa & Mas Mas</h1>
+          <h1 className="font-heading text-6xl my-4">M & R</h1>
           <p className="mt-8">Kepada Yth. Bapak/Ibu/Saudara/i</p>
           <p className="font-bold text-lg">[Nama Tamu Undangan]</p>
           <button onClick={handleOpenInvitation} className="mt-8 inline-flex items-center gap-2 px-8 py-3 bg-gold text-white rounded-full hover:bg-opacity-80 transition-colors shadow-lg">
@@ -89,21 +88,20 @@ export default function WeddingPage() {
       </div>
 
       <div className={`transition-opacity duration-1000 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
-        <header className="relative h-screen flex items-center justify-center text-white text-center bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://picsum.photos/1920/1080?grayscale')" }}>
+        <header className="relative h-screen flex items-center justify-center text-white text-center bg-cover bg-center bg-fixed" style={{ backgroundImage: `url('/Hero.webp')` }}>
           <div className="absolute inset-0 bg-black/50"></div>
-          <div className="relative z-10 p-5">
-            <h4 data-aos="fade-down" className="tracking-widest">THE WEDDING OF</h4>
-            <h1 data-aos="zoom-in" data-aos-delay="200" className="font-heading text-7xl my-4">Sasa & Mas Mas</h1>
-            <p data-aos="fade-up" data-aos-delay="400" className="text-xl">21 Desember 2025</p>
-            <div data-aos="fade-up" data-aos-delay="600" className="flex justify-center gap-4 mt-8">
-              {Object.entries(countdown).map(([unit, value]) => (
-                <div key={unit} className="p-4 bg-black/40 rounded-lg border border-white/20 min-w-[80px]">
-                  <span className="block text-4xl font-bold">{String(value).padStart(2, '0')}</span> <span className="capitalize">{unit}</span>
-                </div>
-              ))}
-            </div>
+          <div className="relative z-10 p-5 max-w-3xl mx-auto">
+              <h4 data-aos="fade-down" className="tracking-widest">
+                  THE WEDDING OF
+              </h4>
+              <h1 data-aos="zoom-in" data-aos-delay="200" className="font-heading text-7xl md:text-8xl my-4">
+                  Marisa & Rivaldi
+              </h1>
+              <p data-aos="fade-up" data-aos-delay="400" className="text-xl">
+                  Sabtu, 05 Desember 2025
+              </p>              
           </div>
-        </header>
+      </header>
 
         <section className="py-20 px-5 bg-gray-50/50">
             <div data-aos="fade-up" className="max-w-3xl mx-auto text-center italic">
@@ -112,115 +110,184 @@ export default function WeddingPage() {
             </div>
         </section>
 
-        {/* ✅ PERUBAHAN: Menambahkan background bunga di Couple Section */}
+        {/* ✅ PERUBAHAN: Menghilangkan foto dan fokus pada teks */}
         <section className="py-20 px-5 overflow-hidden relative bg-floral-pattern bg-cover bg-center">
             <div className="absolute inset-0 bg-white/80 z-0"></div>
             <div className="relative z-10">
                 <SectionTitle>Dengan Rahmat Tuhan</SectionTitle>
-                <p data-aos="fade-up" className="text-center max-w-2xl mx-auto mt-4 mb-16">Kami bersatu dalam ikatan suci pernikahan, putra dan putri dari keluarga:</p>
-                <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-20">
+                <p data-aos="fade-up" className="text-center max-w-2xl mx-auto mt-4 mb-16">
+                    Kami bersatu dalam ikatan suci pernikahan, putra dan putri dari keluarga:
+                </p>
+                <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                    
+                    {/* --- Mempelai Wanita --- */}
                     <div data-aos="fade-right" className="text-center">
-                        <div className="relative w-48 h-48 mx-auto">
-                            <div className="absolute inset-0 bg-gold/20 rounded-full"></div>
-                            <Image src="https://picsum.photos/id/1027/400/400" alt="Sasa" width={192} height={192} className="rounded-full relative filter grayscale brightness-50 contrast-200" />
-                        </div>
-                        <h3 className="font-heading text-4xl mt-6">Sasa Putri</h3>
-                        <p className="mt-2 text-lg">Bapak John Doe & Ibu Jane Doe</p>
+                        {/* FOTO DIHAPUS DARI SINI */}
+                        <h3 className="font-heading text-4xl">Marisa Prima Putri</h3>
+                        <p className="mt-2 text-lg max-w-xs mx-auto">
+                            Putri Pertama dari Alm. Bapak Priyo Prayogi dan Ibu Fatmawati
+                        </p>
                     </div>
+
                     <div data-aos="zoom-in" data-aos-delay="300" className="font-heading text-7xl text-gold">&</div>
+                    
+                    {/* --- Mempelai Pria --- */}
                     <div data-aos="fade-left" className="text-center">
-                        <div className="relative w-48 h-48 mx-auto">
-                            <div className="absolute inset-0 bg-gold/20 rounded-full"></div>
-                            <Image src="https://picsum.photos/id/1005/400/400" alt="Mas Mas" width={192} height={192} className="rounded-full relative filter grayscale brightness-50 contrast-200" />
-                        </div>
-                        <h3 className="font-heading text-4xl mt-6">Mas Mas Siregar</h3>
-                        <p className="mt-2 text-lg">Bapak James Siregar & Ibu Sarah Siregar</p>
+                        {/* FOTO DIHAPUS DARI SINI */}
+                        <h3 className="font-heading text-4xl">M. Trisda Rivaldi</h3>
+                        <p className="mt-2 text-lg max-w-xs mx-auto">
+                            Putra Pertama dari Bapak Trisno Budi dan Alm. Ibu Ida Irma Suryani
+                        </p>
                     </div>
+                    
                 </div>
             </div>
         </section>
 
-        <section data-aos="fade-up" className="py-20 px-5 bg-floral-pattern bg-cover bg-center relative">
-            <div className="absolute inset-0 bg-white/80 z-0"></div>
-            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-10">
-                <SectionTitle>Save The Date</SectionTitle>
-                 <div data-aos="zoom-in-up" className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-left relative overflow-hidden">
-                    <div className="absolute left-6 top-1/2 -translate-y-1/2 font-heading font-bold text-gold/70 text-7xl select-none">21</div>
-                    <div className="ml-24">
-                        <h3 className="font-heading text-4xl text-brand-dark mb-4 text-center">Akad Nikah</h3>
-                        <p className="flex items-center gap-3 mb-2"><BiCalendarHeart className="text-gold text-2xl"/> Minggu, 21 Des 2025</p>
-                        <p className="flex items-center gap-3 mb-2"><BiTime className="text-gold text-2xl"/> 09:00 WIB</p>
-                        <p className="flex items-start gap-3"><BiSolidMap className="text-gold text-2xl flex-shrink-0 mt-1"/> Balai Kota Bandung</p>
-                    </div>
-                </div>
-                <div data-aos="zoom-in" className="text-gold text-5xl"><BiHeart /></div>
-                <div data-aos="zoom-in-up" className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-left relative overflow-hidden">
-                    <div className="absolute left-6 top-1/2 -translate-y-1/2 font-heading font-bold text-gold/70 text-7xl select-none">21</div>
-                    <div className="ml-24">
-                        <h3 className="font-heading text-4xl text-brand-dark mb-4 text-center">Resepsi</h3>
-                        <p className="flex items-center gap-3 mb-2"><BiCalendarHeart className="text-gold text-2xl"/> Minggu, 21 Des 2025</p>
-                        <p className="flex items-center gap-3 mb-2"><BiTime className="text-gold text-2xl"/> 12:00 s.d Selesai</p>
-                        <p className="flex items-start gap-3"><BiSolidMap className="text-gold text-2xl flex-shrink-0 mt-1"/> Balai Kota Bandung</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        {/* ✅ PERUBAHAN: Menambahkan background bunga di Love Story Section */}
-        <section className="py-20 px-5 relative bg-floral-pattern bg-cover bg-center">
-            <div className="absolute inset-0 bg-white/80 z-0"></div>
+        {/* ✅ SECTION BARU: Countdown Timer */}
+        <section className="py-20 px-5 text-white text-center bg-cover bg-center bg-fixed" style={{ backgroundImage: `url('/Hero.webp')` }}>
+            {/* Gunakan gambar yang sama dengan header (Hero.webp) atau gambar lain 
+              yang cocok untuk menciptakan kesinambungan visual.
+            */}
+            <div className="absolute inset-0 bg-black/60 z-0"></div>
             <div className="relative z-10">
-                <SectionTitle>Our Love Story</SectionTitle>
-                <div data-aos="fade-up" className="relative max-w-2xl mx-auto mt-16">
-                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gold/30"></div>
-                    {[
-                      { year: 2019, title: "First Met", desc: "Awal dari sebuah cerita yang tak terduga, di mana dua pasang mata bertemu untuk pertama kalinya." },
-                      { year: 2022, title: "Relationship", desc: "Sebuah komitmen terucap, mengukir janji untuk berjalan bersama dalam suka dan duka." },
-                      { year: 2025, title: "Engagement", desc: "Cincin melingkar di jari manis, menjadi simbol cinta yang lebih serius dan abadi." },
-                      { year: 2025, title: "Marriage", desc: "Di bawah langit yang menjadi saksi, kami mengikat janji suci untuk selamanya." },
-                    ].map((item, index) => (
-                        <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'} mb-12`}>
-                            <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                                <h3 className="font-heading text-3xl text-gold">{item.title}</h3>
-                                <p className="text-sm text-gray-500 mb-2">{item.year}</p>
-                                <p>{item.desc}</p>
-                            </div>
-                            <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-gold rounded-full border-4 border-white shadow-md"></div>
+                <h2 data-aos="fade-up" className="font-heading text-5xl md:text-6xl tracking-tight">
+                    Menghitung Hari
+                </h2>
+                <div data-aos="fade-up" data-aos-delay="200" className="flex justify-center gap-4 md:gap-8 mt-12">
+                    {Object.entries(countdown).map(([unit, value]) => (
+                        <div key={unit} className="text-center">
+                            <span className="block font-heading text-6xl md:text-7xl">
+                                {String(value).padStart(2, '0')}
+                            </span>
+                            <span className="capitalize text-sm tracking-widest">{unit}</span>
                         </div>
                     ))}
                 </div>
-            </div>
-        </section>        
-
-        <section className="py-20 px-5 text-center">
-            <div className="max-w-3xl mx-auto">
-                <BiSolidGift data-aos="zoom-in" className="text-gold text-7xl mx-auto mb-4" />
-                <SectionTitle>Wedding Gift</SectionTitle>
-                <p data-aos="fade-up" className="mt-4 text-lg max-w-2xl mx-auto">Doa restu Anda adalah hadiah terindah. Namun jika ingin memberikan tanda kasih, kami dengan senang hati menerimanya.</p>
-                {/* ✅ PERUBAHAN: Mengganti warna tombol */}
-                <div data-aos="fade-up" data-aos-delay="200" className="flex justify-center gap-4 mt-8">
-                    <button onClick={() => setShowGiftInfo(showGiftInfo === 'bank' ? null : 'bank')} className="px-6 py-3 bg-black text-white rounded-full inline-flex items-center gap-2 hover:bg-opacity-80 transition-colors">
-                        <BiSolidBank /> Kirim Amplop
-                    </button>
-                    <button onClick={() => setShowGiftInfo(showGiftInfo === 'address' ? null : 'address')} className="px-6 py-3 bg-brand-chocolate text-white rounded-full inline-flex items-center gap-2 hover:bg-opacity-80 transition-colors">
-                        <BiSolidPackage /> Kirim Kado
-                    </button>
-                </div>
-                {showGiftInfo === 'bank' && (
-                    <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto">
-                        <h4 className="font-heading text-xl">Transfer Bank</h4>
-                        <p>BCA: 1234567890 a/n Sasa Putri</p>
-                        <button onClick={() => navigator.clipboard.writeText('1234567890')} className="mt-2 text-sm bg-gol text-white px-3 py-1 rounded-full">Salin No. Rek</button>
-                    </div>
-                )}
-                {showGiftInfo === 'address' && (
-                     <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto">
-                        <h4 className="font-heading text-xl">Alamat Pengiriman</h4>
-                        <p>Jl. Bahagia Selamanya No. 21, Bandung, Jawa Barat, 40123 a/n Sasa & Mas Mas</p>
-                    </div>
-                )}
+                <button 
+                    data-aos="fade-up" 
+                    data-aos-delay="400" 
+                    className="mt-12 px-8 py-3 bg-gold text-white rounded-full hover:bg-opacity-80 transition-colors shadow-lg"
+                >
+                    Simpan Tanggal
+                </button>
             </div>
         </section>
+
+        {/* ✅ REVISI: Menggabungkan Akad & Resepsi ke dalam satu wadah melengkung */}
+        <section className="py-24 px-5 bg-cover bg-center" style={{ backgroundImage: "url('/background.avif')" }}>
+            {/* Ganti 'backgroundImage' dengan gambar latar yang Anda inginkan */}
+            <div data-aos="zoom-in-up" className="max-w-xl mx-auto bg-white/90 backdrop-blur-sm shadow-2xl 
+              rounded-tl-[150px] rounded-tr-[150px] rounded-b-2xl overflow-hidden text-center p-8 md:p-12">
+              
+              {/* --- Bagian Akad Nikah --- */}
+              <div className="mb-10">
+                <h3 className="font-heading text-4xl text-brand-dark">Akad Nikah</h3>
+                <div className="my-6 flex items-center justify-center gap-4">
+                  <p className="font-heading text-xl">DES</p>
+                  <p className="font-heading text-6xl px-4 border-l-2 border-r-2 border-gold/50">05</p>
+                  <p className="font-heading text-xl">2025</p>
+                </div>
+                <p className="flex items-center justify-center gap-3 mb-4"><BiTime className="text-gold text-xl"/> 08:00 WIB - Selesai</p>
+                <p className="font-semibold">Kediaman Mempelai Wanita</p>
+                <p className="text-sm px-4">
+                    Jl. Gajah Mada XXIV No. 240 Kaliwates Jember Jawa Timur
+                </p>
+                <a 
+                    href="https://maps.app.goo.gl/ndw7iU3xA4ZzezCn6"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 px-5 py-2 bg-gold text-white text-sm rounded-full hover:bg-opacity-80 transition-colors shadow"
+                >
+                    <BiLinkExternal />
+                    Lihat Lokasi
+                </a>
+              </div>
+
+              {/* --- Pemisah --- */}
+              <hr className="w-1/2 mx-auto border-gold/30 my-8"/>
+
+              {/* --- Bagian Resepsi --- */}
+              <div>
+                <h3 className="font-heading text-4xl text-brand-dark">Resepsi</h3>
+                <div className="my-6 flex items-center justify-center gap-4">
+                  <p className="font-heading text-xl">DES</p>
+                  <p className="font-heading text-6xl px-4 border-l-2 border-r-2 border-gold/50">21</p>
+                  <p className="font-heading text-xl">2025</p>
+                </div>
+                <p className="flex items-center justify-center gap-3 mb-4"><BiTime className="text-gold text-xl"/> 16:00 - 20:00 WIB</p>
+                <p className="font-semibold">Kediaman Mempelai Wanita</p>
+                <p className="text-sm px-4">
+                    Jl. Gajah Mada XXIV No. 240 Kaliwates Jember Jawa Timur
+                </p>
+                <a 
+                    href="https://maps.app.goo.gl/ndw7iU3xA4ZzezCn6"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 px-5 py-2 bg-gold text-white text-sm rounded-full hover:bg-opacity-80 transition-colors shadow"
+                >
+                    <BiLinkExternal />
+                    Lihat Lokasi
+                </a>
+              </div>
+            </div>
+        </section>
+                    
+
+        <section className="py-20 px-5 text-center">
+          <div className="max-w-3xl mx-auto">
+              <BiSolidGift data-aos="zoom-in" className="text-gold text-7xl mx-auto mb-4" />
+              <SectionTitle>Wedding Gift</SectionTitle>
+              <p data-aos="fade-up" className="mt-4 text-lg max-w-2xl mx-auto">Doa restu Anda adalah hadiah terindah. Namun jika ingin memberikan tanda kasih, kami dengan senang hati menerimanya.</p>
+              
+              <div data-aos="fade-up" data-aos-delay="200" className="flex justify-center gap-4 mt-8">
+                  <button onClick={() => setShowGiftInfo(showGiftInfo === 'bank' ? null : 'bank')} className="px-6 py-3 bg-black text-white rounded-full inline-flex items-center gap-2 hover:bg-opacity-80 transition-colors">
+                      <BiSolidBank /> Kirim Amplop
+                  </button>
+                  <button onClick={() => setShowGiftInfo(showGiftInfo === 'address' ? null : 'address')} className="px-6 py-3 bg-brand-chocolate text-white rounded-full inline-flex items-center gap-2 hover:bg-opacity-80 transition-colors">
+                      <BiSolidPackage /> Kirim Kado
+                  </button>
+              </div>
+
+              {/* ✅ PERUBAHAN DIMULAI DI SINI */}
+              {showGiftInfo === 'bank' && (
+                  <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto space-y-4">
+                      <h4 className="font-heading text-xl text-center">Transfer Bank</h4>
+                      
+                      {/* --- Rekening Bank Mandiri --- */}
+                      <div className="text-left p-4 border rounded-md bg-white">
+                          <p className="font-bold">Bank Mandiri</p>
+                          <p className="text-gray-700">1430028223343</p>
+                          <p className="text-gray-600 text-sm">a.n Mohammad Trisda Rivaldi</p>
+                          <button onClick={() => navigator.clipboard.writeText('1430028223343')} className="mt-2 text-sm text-gold inline-flex items-center gap-1 font-medium">
+                              <BiCopy /> Salin No. Rekening
+                          </button>
+                      </div>
+
+                      {/* --- Rekening Bank BRI --- */}
+                      <div className="text-left p-4 border rounded-md bg-white">
+                          <p className="font-bold">BRI</p>
+                          <p className="text-gray-700">2203-01-007739-50-1</p>
+                          <p className="text-gray-600 text-sm">a.n Marisa Prima Putri</p>
+                          <button onClick={() => navigator.clipboard.writeText('220301007739501')} className="mt-2 text-sm text-gold inline-flex items-center gap-1 font-medium">
+                              <BiCopy /> Salin No. Rekening
+                          </button>
+                      </div>
+                  </div>
+              )}
+
+              {showGiftInfo === 'address' && (
+                  <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto">
+                      <h4 className="font-heading text-xl">Alamat Pengiriman</h4>
+                      <p className="mt-2">
+                          Jl. Gajah Mada XXIV No. 240 Kaliwates Jember Jawa Timur
+                      </p>
+                      <p className="text-sm text-gray-600 mt-1">a/n Marisa & Rivaldi</p>
+                  </div>
+              )}
+              {/* ✅ PERUBAHAN SELESAI DI SINI */}
+          </div>
+      </section>
 
         {/* ✅ SECTION: LOKASI */}
         <section className="py-20 px-5 bg-white">
@@ -254,13 +321,7 @@ export default function WeddingPage() {
             <SectionTitle>Konfirmasi Kehadiran</SectionTitle>
             <form data-aos="fade-up" className="max-w-lg mx-auto mt-10 text-left grid gap-4">
                 <input type="text" placeholder="Nama Lengkap"
-                    className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"/>
-                <select className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none">
-                    <option>Jumlah Tamu</option>
-                    <option>1 Orang</option>
-                    <option>2 Orang</option>
-                    <option>3 Orang</option>
-                </select>
+                    className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"/>                
                 <select className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none">
                     <option>Status Kehadiran</option>
                     <option>Hadir</option>
@@ -273,13 +334,78 @@ export default function WeddingPage() {
                     Kirim RSVP
                 </button>
             </form>
-        </section>      
+        </section>
 
-        <footer className="py-20 px-5 bg-brand-dark text-center text-white/80 bg-cover bg-center" style={{ backgroundImage: "url('https://picsum.photos/1920/1080?grayscale&blur=2')" }}>
-            <div className="relative z-10">
-                <p className="max-w-2xl mx-auto text-xl">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir untuk memberikan doa restu.</p>
-                <h3 className="font-heading text-gold text-5xl mt-8">Sasa & Mas Mas</h3>
+        {/* ✅ SECTION: UCAPAN & DOA */}
+        <section className="py-20 px-5 bg-floral-pattern bg-cover bg-center relative">
+            <div className="absolute inset-0 bg-white/85 z-0"></div>
+            <div className="relative z-10 max-w-3xl mx-auto text-center">
+                <SectionTitle>Ucapan & Doa</SectionTitle>
+                <form data-aos="fade-up" className="mt-10 grid gap-4">
+                    <input type="text" placeholder="Nama Anda"
+                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"/>
+                    <textarea placeholder="Ucapan untuk pengantin"
+                        rows={4}
+                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"></textarea>
+                    <button type="submit"
+                        className="w-full px-6 py-3 bg-black text-white rounded-full hover:bg-opacity-80 transition-colors">
+                        Kirim Ucapan
+                    </button>
+                </form>
+
+                {/* ✅ Dummy pesan contoh (bisa dihubungkan ke API nanti) */}
+                <div className="mt-10 grid gap-6" data-aos="fade-up" data-aos-delay="300">
+                    {["Selamat berbahagia!", "Doa terbaik untuk kalian!", "Semoga langgeng sampai akhir hayat ❤️"].map((msg, i) => (
+                        <div key={i} className="p-4 rounded-lg bg-white shadow-md border-l-4 border-gold text-left">
+                            <p className="font-medium">Tamu Undangan {i+1}</p>
+                            <p className="text-gray-600 mt-1">{msg}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
+        </section>
+
+        <footer 
+          // ✅ PERUBAHAN UTAMA ADA DI BARIS INI
+          className="relative h-screen flex items-center justify-center px-5 text-center text-white/90 bg-cover bg-center" 
+          style={{ backgroundImage: `url('/Hero.webp')` }}
+        >
+          <div className="absolute inset-0 bg-black/70 z-0"></div>
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            
+            <h2 data-aos="fade-up" className="font-heading text-5xl">
+              Terima Kasih
+            </h2>
+
+            <p data-aos="fade-up" data-aos-delay="200" className="mt-4 max-w-xl mx-auto text-white/80">
+              Merupakan suatu kehormatan dan kebahagiaan bagi kami atas kehadiran serta doa restu yang Anda berikan.
+            </p>
+
+            {/* --- Inisial & Tanggal --- */}
+            <div data-aos="fade-up" data-aos-delay="400" className="mt-12">
+              <h3 className="font-heading text-4xl tracking-widest flex items-center gap-4">
+                M <div data-aos="zoom-in" data-aos-delay="300" className="font-heading text-4xl text-gold">&</div> R
+              </h3>
+              <p className="mt-2 text-sm opacity-80">
+                05 DESEMBER 2025
+              </p>
+            </div>
+            
+            {/* --- Credit Vendor --- */}
+            <div data-aos="fade-up" data-aos-delay="600" className="mt-16 text-xs text-white/60">
+              <p>Made by</p>
+              {/* Ganti href dan nama vendor sesuai kebutuhan */}
+              <a 
+                href="#" // <-- Ganti dengan link vendor Anda
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold hover:text-white transition-colors duration-300"
+              >
+                SevenDigiSoulution
+              </a>
+            </div>
+
+          </div>
         </footer>
       </div>
     </main>
