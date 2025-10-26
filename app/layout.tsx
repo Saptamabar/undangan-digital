@@ -11,12 +11,35 @@ const playfair = Playfair_Display({
 const lato = Lato({
   subsets: ['latin'],
   weight: ['300', '400', '700'],
-  variable: '--font-lato', // Variabel ini digunakan di globals.css
+  variable: '--font-lato',
 })
 
 export const metadata: Metadata = {
-  title: 'The Wedding of Amara & Jonathan',
-  description: 'Kami mengundang Anda untuk merayakan hari bahagia kami.',
+  title: 'The Wedding of Rivaldi & Marisa', 
+  description: 'Undangan Pernikahan Mohammad Trisda Rivaldi & Marisa Prima Putri.',
+  keywords: 'undangan pernikahan, wedding invitation, trisda dan marisa, the wedding',
+
+  openGraph: {
+    title: 'The Wedding of Rivaldi & Marisa',
+    description: 'Kami mengundang Anda untuk merayakan hari bahagia kami.',
+    url: 'https://undangan-anda.com',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Trisda & Marisa Wedding Invitation',
+      },
+    ],
+    locale: 'id_ID',
+    type: 'website',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+
 }
 
 export default function RootLayout({

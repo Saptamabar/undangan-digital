@@ -9,7 +9,8 @@
   --color-brand-chocolate: #5D4037;
   --font-heading: var(--font-playfair), serif;
   --font-body: var(--font-lato), sans-serif;
-  --bg-floral-pattern: url('https://i.ibb.co/L5122G3/blue-floral-pattern-siluet.png');
+  --hero-1-desktop: url('/HERO_1_16X9.webp');
+  --hero-1-mobile: url('/HERO_1_3X4.webp');
 }
 
 /* ✅ Body style pakai var() bukan theme() */
@@ -28,59 +29,32 @@ body {
   color: var(--color-brand-dark);
 }
 
-/* Dark Elegant Hero Theme */
-.hero-dark {
-  position: relative;
-  background-image: url('https://picsum.photos/1920/1080?grayscale');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.hero-dark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(2px);
-  z-index: 1;
-}
-
-/* Floral Corner Frames */
-.floral-frame::before,
-.floral-frame::after {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 2;
-  opacity: 0.9;
-}
-
-.floral-frame::before {
-  top: 0;
-  left: 0;
-  background-image: url("/decor/floral-corner-gold-top-left.png");
-}
-
-.floral-frame::after {
-  bottom: 0;
-  right: 0;
-  background-image: url("/decor/floral-corner-gold-bottom-right.png");
-}
-
-/* Better mobile fit */
-@media (max-width: 480px) {
-  .floral-frame::before,
-  .floral-frame::after {
-    width: 110px;
-    height: 110px;
-  }
-}
-
 /* Gold Text Glow */
 .text-gold-glow {
   text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
 }
+
+.hero-bg {
+  background-image: url('/HERO_1_3X4.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    background-image: url('/HERO_1_16X9.webp');
+  }
+}
+
+.hero-2-bg {
+  background-image: url('/HERO_2_3X4.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .hero-2-bg {
+    background-image: url('/HERO_2_16X9.webp');
+  }
+}
+
