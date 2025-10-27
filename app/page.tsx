@@ -105,7 +105,7 @@ export default function WeddingPage() {
 
         <section className="py-20 px-5 bg-gray-50/50">
             <div data-aos="fade-up" className="max-w-3xl mx-auto text-center italic">
-                <p className="text-xl md:text-2xl leading-relaxed">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."</p>
+                <p className="text-xl md:text-2xl leading-relaxed">"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
                 <h4 className="font-heading text-2xl mt-6">- QS. Ar-Rum: 21 -</h4>
             </div>
         </section>
@@ -114,10 +114,10 @@ export default function WeddingPage() {
         <section className="py-20 px-5 overflow-hidden relative">
             <div className="absolute inset-0 bg-white/80 z-0"></div>
             <div className="relative z-10">
-                <SectionTitle>Assalamualaikum wr. wb</SectionTitle>
+                <h1 data-aos="fade-up" className='font-heading text-4xl md:text-5xl text-center text-brand-dark'>Assalamualaikum wr. wb</h1>
                 <p data-aos="fade-up" className="text-center max-w-2xl mx-auto mt-4 mb-16">
                     Dengan Memohon Rahmat dan Ridho Allah Subhanahu Wa Ta'ala. Kami Mengundang Bapak/Ibu Saudara/i, 
-                    Untuk Menghadiri Resepsi Pernikahan Putra dan Putri Dari Keluarga
+                    Untuk Menghadiri Resepsi Pernikahan Putra dan Putri Kami
                 </p>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
                     
