@@ -114,9 +114,10 @@ export default function WeddingPage() {
         <section className="py-20 px-5 overflow-hidden relative">
             <div className="absolute inset-0 bg-white/80 z-0"></div>
             <div className="relative z-10">
-                <SectionTitle>Dengan Rahmat Tuhan</SectionTitle>
+                <SectionTitle>Assalamualaikum wr. wb</SectionTitle>
                 <p data-aos="fade-up" className="text-center max-w-2xl mx-auto mt-4 mb-16">
-                    Kami bersatu dalam ikatan suci pernikahan, putra dan putri dari keluarga:
+                    Dengan Memohon Rahmat dan Ridho Allah Subhanahu Wa Ta'ala. Kami Mengundang Bapak/Ibu Saudara/i, 
+                    Untuk Menghadiri Resepsi Pernikahan Putra dan Putri Dari Keluarga
                 </p>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
                     
