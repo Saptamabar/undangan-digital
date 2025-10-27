@@ -5,8 +5,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import { 
-  BiPlayCircle, BiPauseCircle, BiEnvelopeOpen, BiCalendarHeart, BiHeart,
-  BiTime, BiSolidGift, BiSolidBank, BiSolidPackage,BiLinkExternal, BiCopy
+  BiPlayCircle, BiPauseCircle, BiEnvelopeOpen, BiCalendarHeart, BiHeart,BiCheckSquare, BiUser,
+  BiTime, BiSolidGift, BiSolidBank, BiSolidPackage,BiLinkExternal, BiCopy, BiSolidQuoteLeft, BiChat
 } from "react-icons/bi";
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
@@ -103,47 +103,75 @@ export default function WeddingPage() {
           </div>
       </header>
 
-        <section className="py-20 px-5 bg-gray-50/50">
-            <div data-aos="fade-up" className="max-w-3xl mx-auto text-center italic">
-                <p className="text-xl md:text-2xl leading-relaxed">"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
-                <h4 className="font-heading text-2xl mt-6">- QS. Ar-Rum: 21 -</h4>
-            </div>
-        </section>
+      {/* ✅ SECTION GABUNGAN: Ayat Suci & Perkenalan Mempelai */}
+      <section
+        className="py-24 px-5 relative overflow-hidden"
+        // Latar belakang konsisten dengan section lainnya
+        style={{
+          backgroundColor: '#FAF8F5',
+          backgroundImage: `radial-gradient(#D4AF37 0.5px, transparent 0.5px)`,
+          backgroundSize: `15px 15px`,
+          backgroundPosition: `0 0, 5px 5px`,
+        }}
+      >
+        {/* 🌸 Dekorasi Bunga Kiri */}
+        <div className="absolute top-1/2 -translate-y-1/2 -left-24 z-0 opacity-50">
+          <svg width="300" height="400" viewBox="0 0 250 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 md:w-64 text-gold/30">
+              <path d="M125 0C158.5 58.1 158.5 116.2 125 350 -33.5 221.9 8.5 70 125 0z" fill="currentColor" transform="rotate(-30 125 175)"/>
+              <path d="M125 70C145.5 116.2 145.5 162.4 125 280 -3.5 186.2 41.5 116.2 125 70z" fill="currentColor" transform="rotate(-40 125 175)"/>
+          </svg>
+        </div>
+        {/* 🌸 Dekorasi Bunga Kanan */}
+        <div className="absolute top-1/2 -translate-y-1/2 -right-24 z-0 opacity-50">
+          <svg width="300" height="400" viewBox="0 0 250 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 md:w-64 text-gold/30" style={{ transform: 'scaleX(-1)' }}>
+              <path d="M125 0C158.5 58.1 158.5 116.2 125 350 -33.5 221.9 8.5 70 125 0z" fill="currentColor" transform="rotate(-30 125 175)"/>
+              <path d="M125 70C145.5 116.2 145.5 162.4 125 280 -3.5 186.2 41.5 116.2 125 70z" fill="currentColor" transform="rotate(-40 125 175)"/>
+          </svg>
+        </div>
 
-        {/* ✅ PERUBAHAN: Menghilangkan foto dan fokus pada teks */}
-        <section className="py-20 px-5 overflow-hidden relative">
-            <div className="absolute inset-0 bg-white/80 z-0"></div>
-            <div className="relative z-10">
-                <h1 data-aos="fade-up" className='font-heading text-4xl md:text-5xl text-center text-brand-dark'>Assalamualaikum wr. wb</h1>
-                <p data-aos="fade-up" className="text-center max-w-2xl mx-auto mt-4 mb-16">
-                    Dengan Memohon Rahmat dan Ridho Allah Subhanahu Wa Ta'ala. Kami Mengundang Bapak/Ibu Saudara/i, 
-                    Untuk Menghadiri Resepsi Pernikahan Putra dan Putri Kami
+        <div className="relative z-10">
+          {/* --- Bingkai Ayat Suci --- */}
+          <div data-aos="zoom-in-up" className="max-w-3xl mx-auto p-8 md:p-10 mb-20 bg-white/60 backdrop-blur-md rounded-lg shadow-lg border border-gold/20 text-center italic">
+            <p className="text-xl md:text-2xl leading-relaxed text-brand-dark">
+              "Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang..."
+            </p>
+            <h4 className="font-heading text-2xl mt-6 text-brand-dark not-italic">- QS. Ar-Rum: 21 -</h4>
+          </div>
+
+          {/* --- Perkenalan Mempelai --- */}
+          <div className="text-center">
+            <h1 data-aos="fade-up" className="font-heading text-4xl md:text-5xl text-center text-brand-dark">
+              Assalamualaikum Wr. Wb.
+            </h1>
+            <p data-aos="fade-up" className="text-center max-w-2xl mx-auto mt-4 mb-16 text-brand-dark">
+              Dengan Memohon Rahmat dan Ridho Allah Subhanahu Wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:
+            </p>
+
+            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+              {/* --- Mempelai Wanita --- */}
+              <div data-aos="fade-right" className="text-center">
+                <h3 className="font-heading text-4xl text-brand-dark">Marisa Prima Putri</h3>
+                <p className="mt-2 text-lg max-w-xs mx-auto text-brand-gray">
+                  Putri Pertama dari Alm. Bapak Priyo Prayogi dan Ibu Fatmawati
                 </p>
-                <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-                    
-                    {/* --- Mempelai Wanita --- */}
-                    <div data-aos="fade-right" className="text-center">
-                        {/* FOTO DIHAPUS DARI SINI */}
-                        <h3 className="font-heading text-4xl">Marisa Prima Putri</h3>
-                        <p className="mt-2 text-lg max-w-xs mx-auto">
-                            Putri Pertama dari Alm. Bapak Priyo Prayogi dan Ibu Fatmawati
-                        </p>
-                    </div>
+              </div>
 
-                    <div data-aos="zoom-in" data-aos-delay="300" className="font-heading text-7xl text-gold">&</div>
-                    
-                    {/* --- Mempelai Pria --- */}
-                    <div data-aos="fade-left" className="text-center">
-                        {/* FOTO DIHAPUS DARI SINI */}
-                        <h3 className="font-heading text-4xl">M. Trisda Rivaldi</h3>
-                        <p className="mt-2 text-lg max-w-xs mx-auto">
-                            Putra Pertama dari Bapak Trisno Budi dan Alm. Ibu Ida Irma Suryani
-                        </p>
-                    </div>
-                    
-                </div>
+              {/* --- Ampersand --- */}
+              <div data-aos="zoom-in" data-aos-delay="300" className="font-heading text-7xl text-gold text-gold-glow">
+                &
+              </div>
+
+              {/* --- Mempelai Pria --- */}
+              <div data-aos="fade-left" className="text-center">
+                <h3 className="font-heading text-4xl text-brand-dark">M. Trisda Rivaldi</h3>
+                <p className="mt-2 text-lg max-w-xs mx-auto text-brand-gray">
+                  Putra Pertama dari Bapak Trisno Budi dan Alm. Ibu Ida Irma Suryani
+                </p>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
         {/* ✅ SECTION BARU: Countdown Timer */}
         <section className="relative py-20 px-5 hero-bg text-white text-center bg-fixed">
@@ -203,9 +231,6 @@ export default function WeddingPage() {
                 </a>
               </div>
 
-              {/* --- Pemisah --- */}
-              <hr className="w-1/2 mx-auto border-gold/30 my-8"/>
-
               {/* --- Bagian Resepsi --- */}
               <div>
                 <h3 className="font-heading text-4xl text-brand-dark">Resepsi</h3>
@@ -233,166 +258,275 @@ export default function WeddingPage() {
             </div>
         </section>
                     
+        {/* ✅ SECTION: Wedding Gift */}
+        <section
+          className="py-24 px-5 text-center relative overflow-hidden"
+          // Latar belakang konsisten dengan section lainnya
+          style={{
+            backgroundColor: '#FAF8F5',
+            backgroundImage: `radial-gradient(#D4AF37 0.5px, transparent 0.5px)`,
+            backgroundSize: `15px 15px`,
+            backgroundPosition: `0 0, 5px 5px`,
+          }}
+        >
 
-        <section className="py-20 px-5 text-center">
-          <div className="max-w-3xl mx-auto">
-              <BiSolidGift data-aos="zoom-in" className="text-gold text-7xl mx-auto mb-4" />
-              <SectionTitle>Wedding Gift</SectionTitle>
-              <p data-aos="fade-up" className="mt-4 text-lg max-w-2xl mx-auto">Doa restu Anda adalah hadiah terindah. Namun jika ingin memberikan tanda kasih, kami dengan senang hati menerimanya.</p>
-              
-              <div data-aos="fade-up" data-aos-delay="200" className="flex justify-center gap-4 mt-8">
-                  <button onClick={() => setShowGiftInfo(showGiftInfo === 'bank' ? null : 'bank')} className="px-6 py-3 bg-black text-white rounded-full inline-flex items-center gap-2 hover:bg-opacity-80 transition-colors">
-                      <BiSolidBank /> Kirim Amplop
-                  </button>
-                  <button onClick={() => setShowGiftInfo(showGiftInfo === 'address' ? null : 'address')} className="px-6 py-3 bg-brand-chocolate text-white rounded-full inline-flex items-center gap-2 hover:bg-opacity-80 transition-colors">
-                      <BiSolidPackage /> Kirim Kado
-                  </button>
-              </div>
+          <div className="max-w-3xl mx-auto relative z-10">
+            <BiSolidGift data-aos="zoom-in" className="text-gold text-7xl mx-auto mb-4" />
+            <SectionTitle>Wedding Gift</SectionTitle>
+            <p data-aos="fade-up" className="mt-4 text-lg max-w-2xl mx-auto text-brand-dark">
+              Doa restu Anda adalah hadiah terindah. Namun jika ingin memberikan tanda kasih, kami dengan senang hati menerimanya.
+            </p>
+            
+            {/* ✅ Tombol dengan style aktif/inaktif */}
+            <div data-aos="fade-up" data-aos-delay="200" className="flex justify-center gap-4 mt-8">
+              <button 
+                onClick={() => setShowGiftInfo(showGiftInfo === 'bank' ? null : 'bank')} 
+                className={`px-6 py-3 rounded-full inline-flex items-center gap-2 transition-all duration-300 shadow-lg ${
+                  showGiftInfo === 'bank' ? 'bg-brand-dark text-white' : 'bg-white/80 text-brand-dark hover:bg-white'
+                }`}
+              >
+                <BiSolidBank /> Kirim Amplop
+              </button>
+              <button 
+                onClick={() => setShowGiftInfo(showGiftInfo === 'address' ? null : 'address')} 
+                className={`px-6 py-3 rounded-full inline-flex items-center gap-2 transition-all duration-300 shadow-lg ${
+                  showGiftInfo === 'address' ? 'bg-brand-chocolate text-white' : 'bg-white/80 text-brand-chocolate hover:bg-white'
+                }`}
+              >
+                <BiSolidPackage /> Kirim Kado
+              </button>
+            </div>
 
-              {/* ✅ PERUBAHAN DIMULAI DI SINI */}
+            {/* ✅ Kartu Informasi dengan Desain Baru */}
+            <div className="mt-8 max-w-sm mx-auto">
               {showGiftInfo === 'bank' && (
-                  <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto space-y-4">
-                      
-                      {/* --- Rekening Bank Mandiri --- */}
-                      <div className="text-left p-4 border rounded-md bg-white">
-                          {/* Logo dan Nama Bank */}
-                          <div className="flex items-center gap-3">
-                              <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" 
-                                  alt="Logo Bank Mandiri" 
-                                  className="h-4"
-                              />
-                          </div>
-                          
-                          {/* Detail Rekening */}
-                          <p className="text-gray-700 mt-3">1430028223343</p>
-                          <p className="text-gray-600 text-sm">a.n Mohammad Trisda Rivaldi</p>
-                          <button onClick={() => navigator.clipboard.writeText('1430028223343')} className="mt-2 text-sm text-gold inline-flex items-center gap-1 font-medium">
-                              <BiCopy /> Salin No. Rekening
-                          </button>
-                      </div>
-
-                      {/* --- Rekening Bank BRI --- */}
-                      <div className="text-left p-4 border rounded-md bg-white">
-                          {/* Logo dan Nama Bank */}
-                          <div className="flex items-center gap-3">
-                              <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/2560px-BANK_BRI_logo.svg.png" 
-                                  alt="Logo Bank BRI" 
-                                  className="h-5"
-                              />
-                          </div>
-                          
-                          {/* Detail Rekening */}
-                          <p className="text-gray-700 mt-3">220301007739501</p>
-                          <p className="text-gray-600 text-sm">a.n Marisa Prima Putri</p>
-                          <button onClick={() => navigator.clipboard.writeText('220301007739501')} className="mt-2 text-sm text-gold inline-flex items-center gap-1 font-medium">
-                              <BiCopy /> Salin No. Rekening
-                          </button>
-                      </div>
+                <div className="space-y-4" data-aos="fade-up">
+                  {/* --- Rekening Bank Mandiri --- */}
+                  <div className="text-left p-6 rounded-lg bg-white/70 backdrop-blur-md shadow-lg border border-gold/20">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" alt="Logo Bank Mandiri" className="h-5 mb-3" />
+                    <p className="text-brand-dark font-semibold text-lg tracking-wider">1430028223343</p>
+                    <p className="text-brand-gray text-sm">a.n Mohammad Trisda Rivaldi</p>
+                    <button onClick={() => navigator.clipboard.writeText('1430028223343')} className="mt-3 text-sm text-gold hover:text-gold/80 inline-flex items-center gap-1 font-medium transition-colors">
+                      <BiCopy /> Salin No. Rekening
+                    </button>
                   </div>
+                  {/* --- Rekening Bank BRI --- */}
+                  <div className="text-left p-6 rounded-lg bg-white/70 backdrop-blur-md shadow-lg border border-gold/20">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/2560px-BANK_BRI_logo.svg.png" alt="Logo Bank BRI" className="h-6 mb-3" />
+                    <p className="text-brand-dark font-semibold text-lg tracking-wider">220301007739501</p>
+                    <p className="text-brand-gray text-sm">a.n Marisa Prima Putri</p>
+                    <button onClick={() => navigator.clipboard.writeText('220301007739501')} className="mt-3 text-sm text-gold hover:text-gold/80 inline-flex items-center gap-1 font-medium transition-colors">
+                      <BiCopy /> Salin No. Rekening
+                    </button>
+                  </div>
+                </div>
               )}
 
               {showGiftInfo === 'address' && (
-                  <div data-aos="fade-up" className="mt-8 p-6 bg-gray-100 rounded-lg max-w-sm mx-auto">
-                      <h4 className="font-heading text-xl">Alamat Pengiriman</h4>
-                      <p className="mt-2">
-                          Jl. Gajah Mada XXIV No. 240 Kaliwates Jember Jawa Timur
-                      </p>
-                      <p className="text-sm text-gray-600 mt-1">a/n Marisa & Rivaldi</p>
-                  </div>
+                <div data-aos="fade-up" className="p-6 rounded-lg bg-white/70 backdrop-blur-md shadow-lg border border-gold/20">
+                  <h4 className="font-heading text-2xl text-brand-chocolate">Alamat Pengiriman</h4>
+                  <p className="mt-3 text-brand-dark">
+                    Jl. Gajah Mada XXIV No. 240 Kaliwates Jember Jawa Timur
+                  </p>
+                  <p className="text-sm text-brand-gray mt-1">a/n Marisa & Rivaldi</p>
+                </div>
               )}
-              {/* ✅ PERUBAHAN SELESAI DI SINI */}
+            </div>
           </div>
-      </section>
+        </section>
 
         {/* ✅ SECTION: LOKASI */}
-        <section className="py-20 px-5 bg-white">
+        <section
+          className="py-24 px-5 relative overflow-hidden"
+          // ✅ PERUBAHAN: Latar belakang dengan warna hangat dan pola samar
+          style={{
+            backgroundColor: '#FAF8F5',
+            backgroundImage: `radial-gradient(#D4AF37 0.5px, transparent 0.5px)`,
+            backgroundSize: `15px 15px`,
+            backgroundPosition: `0 0, 5px 5px`,
+          }}
+        >
+          {/* 🌸 Dekorasi Bunga Kiri Atas - Lebih Detail */}
+          <div className="absolute -top-12 -left-16 md:-top-10 md:-left-12 z-0">
+            <svg
+              width="300"
+              height="300"
+              viewBox="0 0 250 250"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-48 md:w-64 text-gold/30" // Menggunakan warna gold
+            >
+              <path
+                d="M125 0C158.5 41.5 158.5 83 125 250-33.5 158.5 8.5 50 125 0z"
+                fill="currentColor"
+                transform="rotate(-45 125 125)"
+              />
+              <path
+                d="M125 50C145.5 83 145.5 117 125 200-3.5 133 41.5 83 125 50z"
+                fill="currentColor"
+                transform="rotate(-55 125 125)"
+              />
+            </svg>
+          </div>
+
+          {/* 🌸 Dekorasi Bunga Kanan Bawah - Lebih Detail */}
+          <div className="absolute -bottom-12 -right-16 md:-bottom-10 md:-right-12 z-0">
+            <svg
+              width="300"
+              height="300"
+              viewBox="0 0 250 250"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-48 md:w-64 text-gold/30" 
+              style={{ transform: 'rotate(180deg)' }} 
+            >
+              <path
+                d="M125 0C158.5 41.5 158.5 83 125 250-33.5 158.5 8.5 50 125 0z"
+                fill="currentColor"
+                transform="rotate(-45 125 125)"
+              />
+              <path
+                d="M125 50C145.5 83 145.5 117 125 200-3.5 133 41.5 83 125 50z"
+                fill="currentColor"
+                transform="rotate(-55 125 125)"
+              />
+            </svg>
+          </div>
+
+          {/* 🌸 Konten utama */}
+          <div className="relative z-10">
             <SectionTitle>Lokasi Acara</SectionTitle>
-            <p data-aos="fade-up" className="text-center mt-4 text-lg">Kami menantikan kehadiran Anda di hari bahagia kami.</p>
+            <p
+              data-aos="fade-up"
+              className="text-center mt-4 text-lg text-brand-dark"
+            >
+              Kami menantikan kehadiran Anda di hari bahagia kami.
+            </p>
 
-            <div data-aos="zoom-in-up" className="max-w-3xl mx-auto mt-10 rounded-xl overflow-hidden shadow-xl border border-gold/20">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3949.2093002678507!2d113.67000307500926!3d-8.181658991849693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMTAnNTQuMCJTIDExM8KwNDAnMjEuMyJF!5e0!3m2!1sid!2sid!4v1761397135149!5m2!1sid!2sid"
-                    width="100%"
-                    height="350"
-                    className="border-0"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+            {/* ✅ PERUBAHAN: Menambahkan efek bingkai pada peta */}
+            <div
+              data-aos="zoom-in-up"
+              className="max-w-3xl mx-auto mt-10 p-2 bg-white rounded-xl shadow-2xl"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3949.2093002678507!2d113.67000307500926!3d-8.181658991849693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMTAnNTQuMCJTIDExM8KwNDAnMjEuMyJF!5e0!3m2!1sid!2sid!4v1761397135149!5m2!1sid!2sid"
+                width="100%"
+                height="350"
+                className="border-0 rounded-md" // sedikit rounded di dalam frame
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
 
-            <div className="flex justify-center mt-6">
-                <a
-                    href="https://maps.app.goo.gl/ndw7iU3xA4ZzezCn6"
-                    target="_blank"
-                    className="px-8 py-3 bg-gold text-white rounded-full shadow-lg hover:bg-opacity-80 transition-colors"
-                >
-                    Buka di Google Maps
-                </a>
+            <div data-aos="fade-up" className="flex justify-center mt-8">
+              <a
+                href="https://maps.app.goo.gl/ndw7iU3xA4ZzezCn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 bg-gold text-white rounded-full shadow-lg hover:bg-opacity-80 transition-colors"
+              >
+                Buka di Google Maps
+              </a>
             </div>
+          </div>
         </section>
 
         {/* ✅ SECTION GABUNGAN: Buku Tamu & RSVP */}
-        <section className="py-20 px-5 relative">
-            <div className="absolute inset-0 bg-white/85 z-0"></div>
-            <div className="relative z-10 max-w-3xl mx-auto text-center">
-                <SectionTitle>Buku Tamu & RSVP</SectionTitle>
-                <p data-aos="fade-up" className="mt-4 max-w-lg mx-auto">
-                    Mohon konfirmasi kehadiran Anda dan berikan doa restu untuk kami di hari bahagia nanti.
-                </p>
+        <section
+          className="py-24 px-5 relative overflow-hidden"
+          // Latar belakang konsisten dengan section sebelumnya
+          style={{
+            backgroundColor: '#FAF8F5',
+            backgroundImage: `radial-gradient(#D4AF37 0.5px, transparent 0.5px)`,
+            backgroundSize: `15px 15px`,
+            backgroundPosition: `0 0, 5px 5px`,
+          }}
+        >
+          {/* 🌸 Dekorasi Bunga Kiri Atas */}
+          <div className="absolute -top-12 -left-16 md:-top-10 md:-left-12 z-0">
+            <svg width="300" height="300" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 md:w-64 text-gold/30">
+              <path d="M125 0C158.5 41.5 158.5 83 125 250-33.5 158.5 8.5 50 125 0z" fill="currentColor" transform="rotate(-45 125 125)" />
+              <path d="M125 50C145.5 83 145.5 117 125 200-3.5 133 41.5 83 125 50z" fill="currentColor" transform="rotate(-55 125 125)" />
+            </svg>
+          </div>
+          {/* 🌸 Dekorasi Bunga Kanan Bawah */}
+          <div className="absolute -bottom-12 -right-16 md:-bottom-10 md:-right-12 z-0">
+            <svg width="300" height="300" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 md:w-64 text-gold/30" style={{ transform: 'rotate(180deg)' }}>
+              <path d="M125 0C158.5 41.5 158.5 83 125 250-33.5 158.5 8.5 50 125 0z" fill="currentColor" transform="rotate(-45 125 125)" />
+              <path d="M125 50C145.5 83 145.5 117 125 200-3.5 133 41.5 83 125 50z" fill="currentColor" transform="rotate(-55 125 125)" />
+            </svg>
+          </div>
+          
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
+            <SectionTitle>Buku Tamu & RSVP</SectionTitle>
+            <p data-aos="fade-up" className="mt-4 max-w-lg mx-auto text-brand-dark">
+              Mohon konfirmasi kehadiran Anda dan berikan doa restu untuk kami di hari bahagia nanti.
+            </p>
 
-                {/* --- Form Gabungan --- */}
-                <form data-aos="fade-up" className="mt-10 max-w-lg mx-auto text-left grid gap-4">
-                    
-                    {/* Input Nama */}
-                    <input 
-                        type="text" 
-                        placeholder="Nama Anda"
-                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none placeholder:text-gray-400"
-                    />
-                    
-                    {/* Pilihan Kehadiran */}              
-                    <select 
-                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none"
-                        defaultValue="" // <-- Add this
-                    >
-                        <option value="" disabled>Status Kehadiran</option> {/* <-- Removed 'selected' */}
-                        <option value="Hadir">Hadir</option>
-                        <option value="Belum Pasti">Belum Pasti</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                    </select>
+            {/* --- Form Gabungan dengan Ikon --- */}
+            <form data-aos="fade-up" className="mt-10 max-w-lg mx-auto text-left grid gap-4">
+              
+              {/* Input Nama */}
+              <div className="relative">
+                <BiUser className="absolute z-100 left-4 top-1/2 -translate-y-1/2 text-gold/80" />
+                <input 
+                  type="text" 
+                  placeholder="Nama Anda"
+                  className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none placeholder:text-gray-500"
+                />
+              </div>
+              
+              {/* Pilihan Kehadiran */}
+              <div className="relative">
+                <BiCheckSquare className="absolute z-100 left-4 top-1/2 -translate-y-1/2 text-gold" />
+                <select 
+                  className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                  defaultValue=""
+                >
+                  <option value="" disabled>Status Kehadiran</option>
+                  <option value="Hadir">Hadir</option>
+                  <option value="Belum Pasti">Belum Pasti</option>
+                  <option value="Tidak Hadir">Tidak Hadir</option>
+                </select>
+              </div>
 
-                    {/* Input Ucapan & Doa */}
-                    <textarea 
-                        placeholder="Tuliskan ucapan & doa Anda..."
-                        rows={4}
-                        className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold outline-none placeholder:text-gray-400"
-                    ></textarea>
-                    
-                    {/* Tombol Submit */}
-                    <button 
-                        type="submit"
-                        className="mt-2 w-full px-6 py-3 bg-brand-dark text-white rounded-full hover:bg-opacity-80 transition-colors"
-                    >
-                        Kirim Konfirmasi & Ucapan
-                    </button>
-                </form>
+              {/* Input Ucapan & Doa */}
+              <div className="relative">
+                <BiChat className="absolute z-100 left-4 top-4 text-gold/80" />
+                <textarea 
+                  placeholder="Tuliskan ucapan & doa Anda..."
+                  rows={4}
+                  className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none placeholder:text-gray-500"
+                ></textarea>
+              </div>
+              
+              {/* Tombol Submit */}
+              <button 
+                type="submit"
+                className="mt-2 w-full px-6 py-3 bg-brand-dark text-white rounded-full hover:bg-opacity-80 transition-colors inline-flex items-center justify-center gap-2"
+              >
+                Kirim Konfirmasi & Ucapan
+              </button>
+            </form>
 
-                {/* --- Daftar Ucapan yang Tampil --- */}
-                <div className="mt-16 text-left" data-aos="fade-up" data-aos-delay="300">
-                    <h3 className="font-heading text-2xl text-brand-dark mb-6 text-center">Ucapan dari Tamu</h3>
-                    <div className="grid gap-6">
-                        {/* Dummy pesan contoh */}
-                        {["Selamat berbahagia!", "Doa terbaik untuk kalian!", "Semoga langgeng sampai akhir hayat ❤️"].map((msg, i) => (
-                            <div key={i} className="p-4 rounded-lg bg-white shadow-md border-l-4 border-gold">
-                                <p className="font-medium">Tamu Undangan {i+1}</p>
-                                <p className="text-gray-600 mt-1">{msg}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+            {/* --- Daftar Ucapan yang Tampil (Scrollable) --- */}
+            <div className="mt-16 text-left" data-aos="fade-up" data-aos-delay="300">
+              <h3 className="font-heading text-3xl text-brand-dark mb-6 text-center">Ucapan & Doa Restu</h3>
+              
+              {/* ✅ Wrapper untuk scroll */}
+              <div className="max-h-[400px] overflow-y-auto space-y-4 pr-2">
+                {/* Dummy pesan contoh */}
+                {["Selamat menempuh hidup baru Rivaldi & Marisa! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.", "Happy wedding! Turut berbahagia, semoga langgeng dan bahagia selalu dunia akhirat ❤️", "Barakallah! Semoga pernikahan kalian dipenuhi berkah dan cinta dari Allah SWT."].map((msg, i) => (
+                  // ✅ Kartu ucapan didesain ulang
+                  <div key={i} className="relative p-4 pl-12 rounded-lg bg-white/80 backdrop-blur-sm shadow-lg">
+                    <BiSolidQuoteLeft className="absolute top-4 left-4 text-gold/30 text-2xl" />
+                    <p className="font-heading text-lg text-brand-dark">Tamu Undangan {i+1}</p>
+                    <p className="text-gray-600 mt-1">{msg}</p>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
         </section>
 
         <footer 
@@ -421,19 +555,18 @@ export default function WeddingPage() {
             </div>
             
             {/* --- Credit Vendor --- */}
-            <div data-aos="fade-up" data-aos-delay="600" className="mt-16 text-xs text-white/60">
-              <p>Made by</p>
+            {/* <div data-aos="fade-up" data-aos-delay="600" className="mt-16 text-xs text-white/60"> */}
+              {/* <p>Made by</p> */}
               {/* Ganti href dan nama vendor sesuai kebutuhan */}
-              <a 
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold hover:text-white transition-colors duration-300"
-              >
-                SevenDigiSoulution
-              </a>
-            </div>
-
+              {/* <a  */}
+                {/* href="#" */}
+                {/* target="_blank" */}
+                {/* rel="noopener noreferrer" */}
+                {/* className="font-semibold hover:text-white transition-colors duration-300" */}
+              {/* > */}
+                {/* SevenDigiSoulution */}
+              {/* </a> */}
+            {/* </div>  */}
           </div>
         </footer>
       </div>
