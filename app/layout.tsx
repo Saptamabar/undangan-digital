@@ -1,11 +1,14 @@
+// app/layout.tsx
+
 import './globals.css'
 import type { Metadata } from 'next'
 import { Playfair_Display, Lato } from 'next/font/google'
+import Providers from './Providers' // ✅ 1. IMPORT PROVIDERS
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-playfair', // Variabel ini digunakan di globals.css
+  variable: '--font-playfair',
 })
 
 const lato = Lato({
@@ -22,10 +25,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Wedding of Rivaldi & Marisa',
     description: 'Kami mengundang Anda untuk merayakan hari bahagia kami.',
-    url: 'https://undangan-anda.com',
+    url: 'https://undangan-anda.com', // Ganti dengan URL asli Anda saat deploy
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.jpg', // Pastikan file ini ada di folder /public
         width: 1200,
         height: 630,
         alt: 'Trisda & Marisa Wedding Invitation',
@@ -39,7 +42,6 @@ export const metadata: Metadata = {
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
-
 }
 
 export default function RootLayout({
@@ -50,7 +52,10 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${playfair.variable} ${lato.variable}`}>
       <body>
-        {children}
+        {/* ✅ 2. BUNGKUS CHILDREN DENGAN PROVIDERS */}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

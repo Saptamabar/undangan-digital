@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
+import { useRouter } from 'next/navigation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -14,14 +17,40 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
     {children}
   </h2>
 );
+import { addGuestbookEntry, type GuestbookEntry } from '@/app/actions';
 
-export default function WeddingPage() {
+type WeddingPageProps = {
+  guestName: string;
+  slug: string;
+  initialEntries: GuestbookEntry[]; 
+};
+
+function RsvpSubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button 
+      type="submit"
+      disabled={pending}
+      className="mt-2 w-full px-6 py-3 bg-brand-dark text-white rounded-full hover:bg-opacity-80 transition-colors inline-flex items-center justify-center gap-2 disabled:bg-gray-400"
+    >
+      {pending ? 'Mengirim...' : 'Kirim Konfirmasi & Ucapan'}
+    </button>
+  );
+}
+
+export default function WeddingPage({ guestName, slug, initialEntries }: WeddingPageProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showGiftInfo, setShowGiftInfo] = useState<'bank' | 'address' | null>(null);
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });    
 
   const audioRef = useRef<HTMLAudioElement>(null);
+  
+  const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const rsvpFormInitialState = { success: false, message: '' };
+  const [rsvpState, rsvpFormAction] = useActionState(addGuestbookEntry, rsvpFormInitialState);
 
   useEffect(() => {
     AOS.init({
@@ -30,6 +59,20 @@ export default function WeddingPage() {
       offset: 100,
     });
   }, []);
+
+  useEffect(() => {
+    if (rsvpState.success) {
+      
+      formRef.current?.reset();
+      
+      alert(rsvpState.message); 
+      
+      router.refresh(); 
+    } else if (rsvpState.message) {
+      
+      alert(rsvpState.message);
+    }
+  }, [rsvpState, router]);
 
   useEffect(() => {
     const weddingDate = new Date("Dec 05, 2025 09:00:00").getTime();
@@ -80,7 +123,7 @@ export default function WeddingPage() {
           <h4 className="text-lg tracking-widest">The Wedding of</h4>
           <h1 className="font-heading text-6xl my-4">M & R</h1>
           <p className="mt-8">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-          <p className="font-bold text-lg">[Nama Tamu Undangan]</p>
+          <p className="font-bold text-lg">{guestName}</p>
           <button onClick={handleOpenInvitation} className="mt-8 inline-flex items-center gap-2 px-8 py-3 bg-gold text-white rounded-full hover:bg-opacity-80 transition-colors shadow-lg">
             <BiEnvelopeOpen /> Buka Undangan
           </button>
@@ -464,70 +507,91 @@ export default function WeddingPage() {
             </p>
 
             {/* --- Form Gabungan dengan Ikon --- */}
-            <form data-aos="fade-up" className="mt-10 max-w-lg mx-auto text-left grid gap-4">
-              
-              {/* Input Nama */}
-              <div className="relative">
-                <BiUser className="absolute z-100 left-4 top-1/2 -translate-y-1/2 text-gold/80" />
-                <input 
-                  type="text" 
-                  placeholder="Nama Anda"
-                  className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none placeholder:text-gray-500"
-                />
-              </div>
-              
-              {/* Pilihan Kehadiran */}
-              <div className="relative">
-                <BiCheckSquare className="absolute z-100 left-4 top-1/2 -translate-y-1/2 text-gold" />
-                <select 
-                  className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none"
-                  defaultValue=""
-                >
-                  <option value="" disabled>Status Kehadiran</option>
-                  <option value="Hadir">Hadir</option>
-                  <option value="Belum Pasti">Belum Pasti</option>
-                  <option value="Tidak Hadir">Tidak Hadir</option>
-                </select>
-              </div>
-
-              {/* Input Ucapan & Doa */}
-              <div className="relative">
-                <BiChat className="absolute z-100 left-4 top-4 text-gold/80" />
-                <textarea 
-                  placeholder="Tuliskan ucapan & doa Anda..."
-                  rows={4}
-                  className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none placeholder:text-gray-500"
-                ></textarea>
-              </div>
-              
-              {/* Tombol Submit */}
-              <button 
-                type="submit"
-                className="mt-2 w-full px-6 py-3 bg-brand-dark text-white rounded-full hover:bg-opacity-80 transition-colors inline-flex items-center justify-center gap-2"
+            {/* ✅ 7. PERBARUI FORM RSVP */}
+          <form 
+            ref={formRef}
+            action={rsvpFormAction}
+            className="mt-10 max-w-lg mx-auto text-left grid gap-4"
+          >
+            {/* Input Nama */}
+            <div className="relative">
+              <BiUser className="absolute z-100 left-4 top-1/2 -translate-y-1/2 text-gold/80" />
+              <input 
+                type="text" 
+                name="guestName" // TAMBAHKAN name
+                placeholder="Nama Anda"
+                className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none placeholder:text-gray-500"
+                required // Tambahkan validasi
+              />
+            </div>
+            
+            {/* Pilihan Kehadiran */}
+            <div className="relative">
+              <BiCheckSquare className="absolute z-100 left-4 top-1/2 -translate-y-1/2 text-gold" />
+              <select 
+                name="presence" // TAMBAHKAN name
+                className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                defaultValue=""
+                required // Tambahkan validasi
               >
-                Kirim Konfirmasi & Ucapan
-              </button>
-            </form>
+                <option value="" disabled>Status Kehadiran</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Belum Pasti">Belum Pasti</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+              </select>
+            </div>
 
-            {/* --- Daftar Ucapan yang Tampil (Scrollable) --- */}
-            <div className="mt-16 text-left" data-aos="fade-up" data-aos-delay="300">
-              <h3 className="font-heading text-3xl text-brand-dark mb-6 text-center">Ucapan & Doa Restu</h3>
+            {/* Input Ucapan & Doa */}
+            <div className="relative">
+              <BiChat className="absolute z-100 left-4 top-4 text-gold/80" />
+              <textarea 
+                name="message" // TAMBAHKAN name
+                placeholder="Tuliskan ucapan & doa Anda... (Opsional)"
+                rows={4}
+                className="w-full p-3 pl-12 rounded-lg border border-gold/30 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-gold focus:border-gold outline-none placeholder:text-gray-500"
+              ></textarea>
+            </div>
+            
+            {/* Input Tersembunyi untuk Slug */}
+            <input type="hidden" name="slug" value={slug} />
+
+            {/* Tombol Submit Kustom */}
+            <RsvpSubmitButton />
+          </form>
+
+          {/* --- Daftar Ucapan yang Tampil (Scrollable) --- */}
+          <div className="mt-16 text-left" data-aos="fade-up" data-aos-delay="300">
+            <h3 className="font-heading text-3xl text-brand-dark mb-6 text-center">
+              Ucapan & Doa Restu
+            </h3>
+            
+            <div className="max-h-[400px] overflow-y-auto space-y-4 pr-2">
               
-              {/* ✅ Wrapper untuk scroll */}
-              <div className="max-h-[400px] overflow-y-auto space-y-4 pr-2">
-                {/* Dummy pesan contoh */}
-                {["Selamat menempuh hidup baru Rivaldi & Marisa! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.", "Happy wedding! Turut berbahagia, semoga langgeng dan bahagia selalu dunia akhirat ❤️", "Barakallah! Semoga pernikahan kalian dipenuhi berkah dan cinta dari Allah SWT."].map((msg, i) => (
-                  // ✅ Kartu ucapan didesain ulang
-                  <div key={i} className="relative p-4 pl-12 rounded-lg bg-white/80 backdrop-blur-sm shadow-lg">
+              {/* ✅ 8. UBAH MENJADI DAFTAR DINAMIS */}
+              {initialEntries.length === 0 ? (
+                <p className="text-center text-gray-500 italic">
+                  Jadilah yang pertama mengirim ucapan!
+                </p>
+              ) : (
+                initialEntries.map((entry) => (
+                  <div key={entry.id} className="relative p-4 pl-12 rounded-lg bg-white/80 backdrop-blur-sm shadow-lg">
                     <BiSolidQuoteLeft className="absolute top-4 left-4 text-gold/30 text-2xl" />
-                    <p className="font-heading text-lg text-brand-dark">Tamu Undangan {i+1}</p>
-                    <p className="text-gray-600 mt-1">{msg}</p>
+                    
+                    <div className="flex justify-between items-center">
+                      <p className="font-heading text-lg text-brand-dark">{entry.name}</p>
+                      <span className="text-xs text-gray-500 bg-gold/10 px-2 py-0.5 rounded-full">
+                        {entry.presence}
+                      </span>
+                    </div>
+
+                    <p className="text-gray-600 mt-1">{entry.message || "..."}</p>
                   </div>
-                ))}
-              </div>
+                ))
+              )}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         <footer 
           // ✅ PERUBAHAN UTAMA ADA DI BARIS INI
